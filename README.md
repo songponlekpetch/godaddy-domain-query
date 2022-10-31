@@ -4,6 +4,7 @@ For query domain from Godaddy API
 # Installation
 1. ดาวน์โหลดโปรแกรม Docker Desktop https://www.docker.com/products/docker-desktop/
 2. เปิดโปรเเกรม Docker Desktop
+3. สร้างไฟล์ .env ใน folder project เเล้วใส่ค่า paramter ตามตัวอย่างในไฟล์ .env.example 
 3. Run command ```docker-compose build``` ที่ folder ของ project เพื่อทำการ Build docker image
    
 # Run command
