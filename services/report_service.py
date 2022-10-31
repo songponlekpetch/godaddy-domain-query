@@ -10,8 +10,13 @@ class ReportService:
     @staticmethod
     def create(data: List[Dict], columns: List[str]) -> None:
         report = pd.DataFrame(data)
-        report["expires"] = pd.to_datetime(report['expires']).dt.strftime("%d %b %Y")
-        report["domain"] = report["domain"].str.lower()
+        
+        if "expires" in columns:
+            report["expires"] = pd.to_datetime(report['expires']).dt.strftime("%d %b %Y")
+            
+        if "domain" in columns:
+            report["domain"] = report["domain"].str.lower()
+            
         report = report[columns]
         collator = pyuca.Collator()
         report.sort_values(by="domain", ascending=True, inplace=True, key=lambda x: x.apply(lambda x: collator.sort_key(x)))
