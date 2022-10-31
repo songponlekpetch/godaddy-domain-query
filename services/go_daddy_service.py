@@ -30,6 +30,4 @@ class GoDaddyService:
             
             return response.json()
         except requests.exceptions.HTTPError as e:
-            print(e.response.status_code)
-            print(e.response.json())
-    
+            print("Error: ", e)
