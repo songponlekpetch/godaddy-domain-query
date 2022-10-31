@@ -18,6 +18,7 @@ class ReportService:
         
         if "expires" in columns:
             report["expires"] = pd.to_datetime(report['expires']).dt.strftime("%d %b %Y")
+            report["expires"] = report["expires"].astype(str)
             
         if "domain" in columns:
             report["domain"] = report["domain"].str.lower()
@@ -25,7 +26,10 @@ class ReportService:
         report = report[columns]
         collator = pyuca.Collator()
         report.sort_values(by="domain", ascending=True, inplace=True, key=lambda x: x.apply(lambda x: collator.sort_key(x)))
-        print(tabulate(report, headers='keys', tablefmt='psql'))
+        # print(tabulate(report, headers='keys', tablefmt='psql'))
+        for index, row in report.iterrows():
+            row = row.to_dict()
+            print("\t".join(list(row.values())))
         
     @staticmethod
     def get_columns(data: List[Dict]):
