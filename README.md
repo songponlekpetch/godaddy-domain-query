@@ -1,6 +1,8 @@
 # godaddy-domain-query
 For query domain from Godaddy API
 
+![alt text](https://github.com/songponlekpetch/godaddy-domain-query/blob/main/process.png?raw=true)
+
 # Installation
 1. ดาวน์โหลดโปรแกรม Docker Desktop https://www.docker.com/products/docker-desktop/
 2. เปิดโปรเเกรม Docker Desktop
