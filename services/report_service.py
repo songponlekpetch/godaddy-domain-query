@@ -20,7 +20,11 @@ class ReportService:
         report = report[columns]
         collator = pyuca.Collator()
         report.sort_values(by="domain", ascending=True, inplace=True, key=lambda x: x.apply(lambda x: collator.sort_key(x)))
-        print(tabulate(report, headers='keys', tablefmt='psql'))
+        
+        # print(tabulate(report, headers='keys', tablefmt='psql'))
+        for index, row in report.iterrows():
+            row = row.to_dict()
+            print("\t".join(list(row.values())))
         
     @staticmethod
     def get_columns(data: List[Dict]):
